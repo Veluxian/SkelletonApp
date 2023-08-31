@@ -18,7 +18,9 @@
     <ion-col>
       <ion-card-header>
         <ion-card-title>Bienvenido</ion-card-title>
-        <ion-label> usuario </ion-label>
+        <ion-label>
+          <p *ngIf="usuario">Usuario: {{usuario}}</p>
+        </ion-label>
       </ion-card-header>
     </ion-col>
   </ion-row>
@@ -32,26 +34,22 @@
       <ion-list>
         <ion-list>
           <ion-item>
-            <ion-input label="Nombre" placeholder="Ingrese Nombre"></ion-input>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input type="text" [(ngModel)]="data.nombre"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input label="Apellido" placeholder="Ingrese Apellido"></ion-input>
+            <ion-label position="stacked">Apellido</ion-label>
+            <ion-input type="text" [(ngModel)]="data.apellido"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-select label="Nivel educacional" placeholder="Seleccione nivel">
-              <ion-select-option value="Media">Media</ion-select-option>
-              <ion-select-option value="Tec.superior">Tec.Superior</ion-select-option>
-              <ion-select-option value="Profesional">Profesional</ion-select-option>
+            <ion-label position="stacked" class="ion-padding-bottom">Educacion</ion-label>
+            <ion-select placeholder="Seleccione Nivel" [(ngModel)]="data.educacion">
+              <ion-select-option *ngFor="let niv of niveles" [value]="niv.ide">{{niv.nivel}}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
-            <ion-input label="Fecha nacimiento"></ion-input>
-            <ion-datetime-button datetime="datetime"></ion-datetime-button>
-            <ion-modal [keepContentsMounted]="true">
-              <ng-template>
-                <ion-datetime presentation="date" id="datetime"></ion-datetime>
-              </ng-template>
-            </ion-modal>
+            <ion-label position="stacked" class="ion-padding-bottom">Fecha Nacimiento</ion-label>
+            <ion-input type="date" [(ngModel)]="data.nacimiento"></ion-input>
           </ion-item>
         </ion-list>
       </ion-list>
@@ -59,11 +57,10 @@
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-button>Limpiar campos</ion-button>
+      <ion-button shape="block" (click)="limpiar()">Limpiar</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button id="alerta">Mostrar</ion-button>
-      <ion-alert trigger="alerta" header="Usuario" message="Su nombre es Felipe Necorto" [buttons]="alertButtons"></ion-alert>
+      <ion-button shape="block" (click)="mostrar()">Mostrar</ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>
