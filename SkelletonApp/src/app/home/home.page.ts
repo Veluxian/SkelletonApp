@@ -7,7 +7,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  usuario:String;
+  //usuario:String;
   niveles:any[]=[
     {id:1,nivel:"Media"},
     {id:2,nivel:"Tecnico"},
