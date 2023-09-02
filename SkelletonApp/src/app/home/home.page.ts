@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { createAnimation, Animation } from '@ionic/core';
+import { AnimationController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -22,7 +25,7 @@ export class HomePage {
     nacimiento:""
   };
   
-  constructor(public alertController:AlertController, private activeroute: ActivatedRoute, private router: Router) 
+  constructor(public alertController:AlertController, private activeroute: ActivatedRoute, private router: Router, private animationCTRL: AnimationController) 
   {
     this.activeroute.paramMap.subscribe(params => {
       if (window.history.state.usuario) {
@@ -40,6 +43,32 @@ export class HomePage {
     (this.data.nombre!="" && this.data.apellido!="") && 
     this.presentAlert("usuario", "Su nombre es " + this.data.nombre + " " + this.data.apellido);
   }
+//animaciones
+ionViewDidEnter(){
+  this.animacionTitulo();
+}
+
+animacionTitulo(){
+  const titulo = document.querySelector('#titulo');
+  if(titulo) {
+    const animation:Animation = this.animationCTRL.create()
+      .addElement(titulo)
+      .duration(2500)
+      .iterations(Infinity)
+      // .keyframes([
+      //   { offset: 0, transform: 'translateX(0px)' },
+      //   { offset: 0.5, transform: 'translateX(50px)' }, 
+      //   { offset: 1, transform: 'translateX(0px)' }, 
+      // ])
+      .fromTo('transform', 'translateX(-50px)', 'translateX(100px)')
+    animation.play();
+  }
+  else{
+    console.log("elemento no encontrado")
+  }
+
+}
+
   /*
   Falta utilizar los diferentes tipos de eventos del ciclo de vida 
   ngOnInit(){} Esta se ejecuta una vez durante la inicializacion del componente
@@ -58,4 +87,5 @@ export class HomePage {
 
     await alert.present();
   }
+  
 }
