@@ -10,6 +10,7 @@ import { AnimationController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
   usuario:string="";
   niveles:any[]=[
@@ -46,8 +47,26 @@ export class HomePage {
 //animaciones
 ionViewDidEnter(){
   this.animacionTitulo();
+  this.animacionBoton();
 }
 
+animacionBoton(){
+  const boton = document.querySelector('.botoncito');
+  if(boton){
+    const animacion:Animation = this.animationCTRL.create()
+      .addElement(boton)
+      .duration(1000)
+      .keyframes([
+        { offset: 0.1, transform:'transalteX(-5px)' },
+        {offset: 0.2, transform:'transalteX(5px)' },
+        {offset: 0.3, transform:'transalteX(-5px)' },
+        {offset: 0.4, transform:'transalteX(5px)' },
+      ])
+  }
+  else {
+    console.log("elemento no encontrado")
+  }
+}
 animacionTitulo(){
   const titulo = document.querySelector('#titulo');
   if(titulo) {
