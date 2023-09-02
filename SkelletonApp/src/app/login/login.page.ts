@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +8,25 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  login:any={
+  login={
     Usuario:"",
     Contrasena:""
   }
   field:string="";
 
-  constructor(public toastController: ToastController) { }
+  constructor(public toastController: ToastController, private router:Router) { }
 
   ngOnInit() {
   }
 
   ingresar(){
+    
     if(this.validateModel(this.login)){
+      let navigationExtras:NavigationExtras = {
+        state: {usuario:this.login.Usuario}
+      };
       this.presentToast("bienvenido");
+      this.router.navigate(['/home'], navigationExtras);
     }
     else{
       this.presentToast("falta: " + this.field);

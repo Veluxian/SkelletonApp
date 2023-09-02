@@ -1,27 +1,17 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Skeleton App
-    </ion-title>
+    <ion-title size="large">Skeleton app</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
 <ion-grid [fixed]="true">
   <ion-row>
     <ion-col>
       <ion-card-header>
-        <ion-card-title>Bienvenido</ion-card-title>
+        <ion-button fill="clear" [routerLink]="['/login']">Atras</ion-button>
+        <ion-card-title>Que bueno verte</ion-card-title>
         <ion-label>
-          <!--
             <p *ngIf="usuario">Usuario: {{usuario}}</p>
-          -->
         </ion-label>
       </ion-card-header>
     </ion-col>
@@ -66,5 +56,9 @@
     </ion-col>
   </ion-row>
 </ion-grid>
-
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>App desarrollada por </ion-title>
+  </ion-toolbar>
+</ion-footer>

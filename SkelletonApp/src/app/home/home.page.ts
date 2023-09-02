@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  //usuario:String;
+  usuario:string="";
   niveles:any[]=[
     {id:1,nivel:"Media"},
     {id:2,nivel:"Tecnico"},
@@ -21,8 +22,14 @@ export class HomePage {
     nacimiento:""
   };
   
-  constructor(public alertController:AlertController) {}
-
+  constructor(public alertController:AlertController, private activeroute: ActivatedRoute, private router: Router) 
+  {
+    this.activeroute.paramMap.subscribe(params => {
+      if (window.history.state.usuario) {
+        this.usuario = window.history.state.usuario;
+      }
+    });
+  }
   limpiar(){
     for(var [key,value] of Object.entries(this.data)){
       Object.defineProperty(this.data,key,{value:""})
