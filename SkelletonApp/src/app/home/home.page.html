@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title size="large" id="titulo">Skeleton app</ion-title>
+    <ion-button fill="clear" [routerLink]="['/login']">Atras</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
@@ -8,7 +9,6 @@
   <ion-row>
     <ion-col>
       <ion-card-header>
-        <ion-button fill="clear" [routerLink]="['/login']">Atras</ion-button>
         <ion-card-title>Que bueno verte</ion-card-title>
         <ion-label>
             <p *ngIf="usuario">Usuario: {{usuario}}</p>
@@ -26,11 +26,11 @@
       <ion-list>
         <ion-list>
           <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
+            <ion-label position="stacked" class="botoncito">Nombre</ion-label>
             <ion-input type="text" [(ngModel)]="data.nombre"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="stacked">Apellido</ion-label>
+            <ion-label position="stacked" class="botoncito">Apellido</ion-label>
             <ion-input type="text" [(ngModel)]="data.apellido"></ion-input>
           </ion-item>
           <ion-item>
@@ -39,10 +39,13 @@
               <ion-select-option *ngFor="let niv of niveles" [value]="niv.ide">{{niv.nivel}}</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item>
-            <ion-label position="stacked" class="ion-padding-bottom">Fecha Nacimiento</ion-label>
-            <ion-input type="date" [(ngModel)]="data.nacimiento"></ion-input>
-          </ion-item>
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
         </ion-list>
       </ion-list>
     </ion-col>

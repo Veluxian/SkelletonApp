@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
+import { Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router, NavigationExtras } from '@angular/router';
 export class LoginPage implements OnInit {
   login={
     Usuario:"",
-    Contrasena:""
+    Contrasena:("")
   }
   field:string="";
 
