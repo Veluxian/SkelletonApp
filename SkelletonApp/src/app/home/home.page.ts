@@ -88,15 +88,6 @@ animacionTitulo(){
 
 }
 
-  /*
-  Falta utilizar los diferentes tipos de eventos del ciclo de vida 
-  ngOnInit(){} Esta se ejecuta una vez durante la inicializacion del componente
-  ionViewWillEnter()[] Cuando el enrutamiento de los componentes esta a punto de animarse a la vista
-  ionViewDidEnter(){} cuando el enrutamiento ha terminado de animarse etapa lista para usar
-  ionViewWillLeave(){} Cuando el enrutamiento esta a punto de animarse pero para sacar la visual(page)
-  ionViewDidLeave(){} cuando el page o el component se ha retirado totalmente de la visial
-  ngOnDestroy(){} se ejecuta justo antes de que angular destruya la vista, util para limpieza u observables
-  */
   async presentAlert(titulo:string, message:string){
     const alert= await this.alertController.create({
       header: titulo,
